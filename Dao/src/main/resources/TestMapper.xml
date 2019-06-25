@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.Mapper">
+    <select id="getUserById" parameterType="integer" resultType="com.bean.User">
+        SELECT * FROM USER where id=#{id}
+    </select>
+    <select id="getUserByName" parameterType="string" resultType="com.bean.User">
+        SELECT * FROM USER where name=#{name}
+    </select>
+    <delete id="deleteUserById" parameterType="integer">
+        DELETE FROM USER WHERE id=#{id}
+    </delete>
+    <insert id="addUser" parameterType="com.bean.User">
+        INSERT INTO USER(NAME ,address) VALUES (#{name},#{address})
+    </insert>
+    <update id="updateUserById" parameterType="com.bean.User">
+        UPDATE USER SET
+        <!-- 下面这trim很重要可以过滤掉条件前面的,-->
+        <trim prefixOverrides=",">
+            <if test="name != null">
+                ,name=#{name}
+            </if>
+            <if test="address != null">
+                ,password=#{address}
+            </if>
+        </trim>
+        where id=#{id}
+    </update>
+    <select id="list" resultType="com.bean.User">
+        SELECT * FROM USER
+    </select>
+    <select id="count" resultType="integer">
+        SELECT COUNT (*)FROM USER
+    </select>
+</mapper>

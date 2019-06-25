@@ -1,0 +1,13 @@
+spring:
+  output:
+    ansi:
+      enabled: always #控制台彩色输出
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user?characterEncoding=UTF-8
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: classpath*:/TestMapper.xml
+  type-aliases-package: com.bean

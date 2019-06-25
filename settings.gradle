@@ -1,0 +1,5 @@
+rootProject.name = 'testmultimodule'
+include 'Api'
+include 'Service'
+include 'Dao'
+
